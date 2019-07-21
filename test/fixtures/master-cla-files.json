@@ -1,0 +1,48 @@
+{
+  "status": 200,
+  "url": "https://api.github.com/repos/ert78gb/cla-sign-bot-test/contents/cla",
+  "headers": {
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+    "cache-control": "private, max-age=60, s-maxage=60",
+    "connection": "close",
+    "content-encoding": "gzip",
+    "content-security-policy": "default-src 'none'",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Fri, 17 May 2019 20:02:52 GMT",
+    "etag": "W/\"681f73ed1947680ed948c04fd8b7d7bd1b3e5686\"",
+    "last-modified": "Fri, 17 May 2019 19:46:13 GMT",
+    "referrer-policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+    "server": "GitHub.com",
+    "status": "200 OK",
+    "strict-transport-security": "max-age=31536000; includeSubdomains; preload",
+    "transfer-encoding": "chunked",
+    "vary": "Accept, Authorization, Cookie, X-GitHub-OTP",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "deny",
+    "x-github-media-type": "github.v3; format=json",
+    "x-github-request-id": "CD3F:3489:1200C5C:2702A42:5CDF136C",
+    "x-ratelimit-limit": "5000",
+    "x-ratelimit-remaining": "4993",
+    "x-ratelimit-reset": "1558126972",
+    "x-xss-protection": "1; mode=block"
+  },
+  "data": [
+    {
+      "name": "cla-1.0.0.md",
+      "path": "cla/cla-1.0.0.md",
+      "sha": "4a18a803e8753f1894ccf979085c8fa7fbd524e7",
+      "size": 12,
+      "url": "https://api.github.com/repos/ert78gb/cla-sign-bot-test/contents/cla/cla-1.0.0.md?ref=master",
+      "html_url": "https://github.com/ert78gb/cla-sign-bot-test/blob/master/cla/cla-1.0.0.md",
+      "git_url": "https://api.github.com/repos/ert78gb/cla-sign-bot-test/git/blobs/4a18a803e8753f1894ccf979085c8fa7fbd524e7",
+      "download_url": "https://raw.githubusercontent.com/ert78gb/cla-sign-bot-test/master/cla/cla-1.0.0.md",
+      "type": "file",
+      "_links": {
+        "self": "https://api.github.com/repos/ert78gb/cla-sign-bot-test/contents/cla/cla-1.0.0.md?ref=master",
+        "git": "https://api.github.com/repos/ert78gb/cla-sign-bot-test/git/blobs/4a18a803e8753f1894ccf979085c8fa7fbd524e7",
+        "html": "https://github.com/ert78gb/cla-sign-bot-test/blob/master/cla/cla-1.0.0.md"
+      }
+    }
+  ]
+}

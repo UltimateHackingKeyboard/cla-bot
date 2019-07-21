@@ -1,0 +1,14 @@
+[
+  {
+    "sha": "4a18a803e8753f1894ccf979085c8fa7fbd524e7",
+    "filename": "cla/1.0.0.md",
+    "status": "added",
+    "additions": 1,
+    "deletions": 0,
+    "changes": 1,
+    "blob_url": "https://github.com/ert78gb/cla-sign-bot-test/blob/fb4c3c696b094acb0c1a8720285191af54c75d17/cla/1.0.0.md",
+    "raw_url": "https://github.com/ert78gb/cla-sign-bot-test/raw/fb4c3c696b094acb0c1a8720285191af54c75d17/cla/1.0.0.md",
+    "contents_url": "https://api.github.com/repos/ert78gb/cla-sign-bot-test/contents/cla/1.0.0.md?ref=fb4c3c696b094acb0c1a8720285191af54c75d17",
+    "patch": "@@ -0,0 +1 @@\n+# CLA 1.0.0"
+  }
+]
