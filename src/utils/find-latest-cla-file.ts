@@ -1,11 +1,14 @@
-import { ReposUpdateFileResponseContent } from '@octokit/rest'
+import { ReposGetContentsResponseItem, ReposGetContentsResponse } from '@octokit/rest'
 import { gt } from 'semver'
 
 import { FileInfo } from '../models/file-info'
 import { getSemverFromText } from './get-semver-from-text'
 
-export const findLatestClaFile = (files: ReposUpdateFileResponseContent[]): Promise<FileInfo> => {
-  const latest = files.reduce((prev: FileInfo, curr: ReposUpdateFileResponseContent): FileInfo => {
+export const findLatestClaFile = (files: ReposGetContentsResponse): Promise<FileInfo> => {
+  if(!Array.isArray(files))
+    files = [files]
+
+  const latest = files.reduce((prev: FileInfo, curr: ReposGetContentsResponseItem): FileInfo => {
     const prevSemver = getSemverFromText(prev.name)
     const currSemver = getSemverFromText(prev.name)
 

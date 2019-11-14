@@ -24,7 +24,7 @@
   },
   "license": "GPL-3.0-only",
   "dependencies": {
-    "probot": "^9.2.19"
+    "probot": "^9.6.4"
   },
   "devDependencies": {
     "@types/diff": "^4.0.2",
