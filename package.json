@@ -34,7 +34,7 @@
     "@typescript-eslint/parser": "^2.7.0",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "jest": "^24.9.0",
-    "eslint": "^6.0.1",
+    "eslint": "^6.6.0",
     "nock": "^11.7.0",
     "semver": "^6.2.0",
     "smee-client": "^1.1.0",
