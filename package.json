@@ -1,6 +1,6 @@
 {
   "name": "cla-sign-bot",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "GitHub CLA sign manager",
   "main": "index.js",
   "type": "module",
