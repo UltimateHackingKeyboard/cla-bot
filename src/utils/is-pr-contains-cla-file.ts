@@ -1,5 +1,5 @@
-import { PullsListFilesResponseItem } from '@octokit/rest'
+import { Octokit } from '@octokit/rest'
 
-export const isPrContainsClaFile = (files: PullsListFilesResponseItem[]): boolean => {
+export const isPrContainsClaFile = (files: Octokit.PullsListFilesResponseItem[]): boolean => {
   return files.some(file => file.filename.startsWith('cla/'))
 }

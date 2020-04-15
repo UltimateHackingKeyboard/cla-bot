@@ -1,5 +1,5 @@
-import { GitGetBlobResponse } from '@octokit/rest'
+import { Octokit } from '@octokit/rest'
 
-export const decodeBlob = (response: GitGetBlobResponse): Promise<string> => {
+export const decodeBlob = (response: Octokit.GitGetBlobResponse): Promise<string> => {
   return Promise.resolve(Buffer.from(response.content, response.encoding as any).toString())
 }
