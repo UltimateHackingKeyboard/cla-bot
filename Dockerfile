@@ -1,4 +1,4 @@
-FROM node:12-alpine as builder
+FROM node:15.2.0-alpine3.12 as builder
 
 # Install build dependencies
 RUN apk add --no-cache python make g++
@@ -12,7 +12,7 @@ COPY ./app.yml .
 RUN npm install --only=production
 
 # ============ APP Stage ===============
-FROM node:12-alpine as app
+FROM node:15.2.0-alpine3.12 as app
 
 ARG NODE_ENV=production
 ENV NODE_ENV=$NODE_ENV
