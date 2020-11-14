@@ -1,7 +1,7 @@
 FROM node:15.2.0-alpine3.12 as builder
 
 # Install build dependencies
-RUN apk add --no-cache python make g++
+RUN apk add --update --no-cache python3 make g++
 
 WORKDIR /usr/src/app
 
@@ -19,7 +19,7 @@ ENV NODE_ENV=$NODE_ENV
 
 ARG PORT=3000
 ENV PORT=$PORT
-EXPOSE $PORT
+EXPOSE $PORTgit checkout m
 
 ENV LOG_FORMAT=bunyan
 
