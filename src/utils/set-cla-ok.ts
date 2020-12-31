@@ -6,7 +6,7 @@ import { CLA_SIGN_STATUS_CONTEXT } from './constants'
 export const setClaOk = async (context: Context, number: number, sha: string) => {
   await addClaSignedLabel(context, number)
 
-  await context.github.repos.createStatus(context.repo({
+  await context.octokit.repos.createCommitStatus(context.repo({
     sha,
     state: 'success',
     context: CLA_SIGN_STATUS_CONTEXT,

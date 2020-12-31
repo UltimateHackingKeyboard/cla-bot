@@ -1,5 +1,5 @@
-import { Octokit } from 'probot'
+import { OctokitResponse } from '@octokit/types'
 
-export const getData = <T> (response: Octokit.Response<T>): Promise<T> => {
+export const getData = <T>(response: OctokitResponse<T>): Promise<T> => {
   return Promise.resolve<T>(response.data)
 }

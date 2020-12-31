@@ -6,7 +6,7 @@ export const getSignersFromContent = (content: string): Promise<string[]> => {
   for (const line of lines) {
     const regExp = new RegExp('^(\\s?)+- @(\\w+)$')
     const rexExpResult = regExp.exec(line)
-    if(!rexExpResult)
+    if (!rexExpResult)
       continue
 
     result.push(rexExpResult[2].trim())

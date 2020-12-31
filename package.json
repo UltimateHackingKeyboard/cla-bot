@@ -23,24 +23,24 @@
   },
   "license": "GPL-3.0-only",
   "dependencies": {
-    "probot": "^9.11.3"
+    "probot": "^11.0.1"
   },
   "devDependencies": {
-    "@types/diff": "^4.0.2",
-    "@types/jest": "^25.2.1",
-    "@types/node": "^12.12.35",
-    "@types/semver": "^6.2.1",
-    "@typescript-eslint/eslint-plugin": "^2.28.0",
-    "@typescript-eslint/parser": "^2.28.0",
-    "eslint": "^6.8.0",
-    "jest": "^25.3.0",
-    "nock": "^12.0.3",
-    "semver": "^6.3.0",
-    "smee-client": "^1.1.0",
-    "source-map-support": "^0.5.16",
-    "ts-jest": "^25.3.1",
-    "ts-node": "^8.8.2",
-    "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "@types/diff": "^5.0.0",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.16",
+    "@types/semver": "^7.3.4",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.16.0",
+    "jest": "^26.6.3",
+    "nock": "^13.0.5",
+    "semver": "^7.3.4",
+    "smee-client": "^1.2.2",
+    "source-map-support": "^0.5.19",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.1.3"
   }
 }

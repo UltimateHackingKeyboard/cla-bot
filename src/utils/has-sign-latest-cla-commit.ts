@@ -4,11 +4,11 @@ import { Pr } from '../models'
 import { getData } from './get-data'
 import { COMMENT_PLS_SIGN_LATEST_CLA } from './constants';
 
-export async function hasSignLatestClaCommit (
+export async function hasSignLatestClaCommit(
   context: Context,
   pr: Pr,
 ): Promise<boolean> {
-  return context.github.issues.listComments(context.repo({
+  return context.octokit.issues.listComments(context.repo({
     'issue_number': pr.number,
     'per_page': 500,
   }))

@@ -10,12 +10,12 @@ import { hasSignLatestClaCommit } from './has-sign-latest-cla-commit'
 import { getFileContentBySha } from './get-file-content-by-sha'
 import { getSignersFromContent } from './get-signers-from-content'
 
-export async function handleAsClaPr (
+export async function handleAsClaPr(
   context: Context,
   pr: Pr,
 ): Promise<boolean> {
   const prFiles = await context
-    .github
+    .octokit
     .pulls
     .listFiles(context.repo({
       'pull_number': pr.number,
@@ -27,12 +27,12 @@ export async function handleAsClaPr (
 
   if (isPrContainsNonClaFile(prFiles) || prFiles.length !== 1) {
 
-    await context.github.issues.createComment(context.repo({
-      number: pr.number,
+    await context.octokit.issues.createComment(context.repo({
+      'issue_number': pr.number,
       body: 'The CLA sign PR can contain only the latest CLA file!',
     }))
 
-    await context.github.repos.createStatus(context.repo({
+    await context.octokit.repos.createCommitStatus(context.repo({
       sha: pr.head.sha,
       state: 'error',
       context: CLA_SIGN_STATUS_CONTEXT,
@@ -45,16 +45,16 @@ export async function handleAsClaPr (
   const signers = await getFileContentBySha(context, prFiles[0].sha)
     .then(getSignersFromContent)
 
-  if (signers.indexOf(pr.user.login) === -1) {
+  if (pr.user && signers.indexOf(pr.user.login) === -1) {
 
-    await context.github.issues.createComment(context.repo({
-      number: pr.number,
+    await context.octokit.issues.createComment(context.repo({
+      'issue_number': pr.number,
       body: `Can not found your GitHub user name in the CLA file.
 Please be sure you use the following pattern: \`- @username\`
 `,
     }))
 
-    await context.github.repos.createStatus(context.repo({
+    await context.octokit.repos.createCommitStatus(context.repo({
       sha: pr.head.sha,
       state: 'error',
       context: CLA_SIGN_STATUS_CONTEXT,
@@ -70,12 +70,12 @@ Please be sure you use the following pattern: \`- @username\`
     if (await hasSignLatestClaCommit(context, pr))
       return true;
 
-    await context.github.issues.createComment(context.repo({
+    await context.octokit.issues.createComment(context.repo({
       'issue_number': pr.number,
       body: COMMENT_PLS_SIGN_LATEST_CLA,
     }))
 
-    await context.github.repos.createStatus(context.repo({
+    await context.octokit.repos.createCommitStatus(context.repo({
       sha: pr.head.sha,
       state: 'error',
       context: CLA_SIGN_STATUS_CONTEXT,
@@ -85,7 +85,7 @@ Please be sure you use the following pattern: \`- @username\`
     return true
   }
 
-  await context.github.repos.createStatus(context.repo({
+  await context.octokit.repos.createCommitStatus(context.repo({
     sha: pr.head.sha,
     state: 'success',
     context: CLA_SIGN_STATUS_CONTEXT,

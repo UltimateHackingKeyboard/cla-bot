@@ -1,11 +1,11 @@
 import { Context } from 'probot'
-import { WebhookPayloadInstallation } from '@octokit/webhooks'
+import { EventPayloads, WebhookEvent } from '@octokit/webhooks'
 
 import {
   setClaStatusesInRepo,
 } from '../utils'
 
-export const installationCreated = async (context: Context<WebhookPayloadInstallation>): Promise<void> => {
+export const installationCreated = async (context: WebhookEvent<EventPayloads.WebhookPayloadInstallation> & Omit<Context<EventPayloads.WebhookPayloadInstallation>, 'id' | 'name' | 'payload'>): Promise<void> => {
   try {
     context.log.debug('installation.created', context.payload)
 

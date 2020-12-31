@@ -1,18 +1,17 @@
-import { Octokit } from '@octokit/rest'
 import { gt } from 'semver'
 
-import { FileInfo } from '../models/file-info'
+import { FileInfo, RepoContentResponse } from '../models'
 import { getSemverFromText } from './get-semver-from-text'
 
-export const findLatestClaFile = (files: Octokit.ReposGetContentsResponse): Promise<FileInfo> => {
-  if(!Array.isArray(files))
+export const findLatestClaFile = (files: RepoContentResponse): Promise<FileInfo> => {
+  if (!Array.isArray(files))
     files = [files]
 
-  const latest = files.reduce((prev: FileInfo, curr: Octokit.ReposGetContentsResponseItem): FileInfo => {
+  const latest = files.reduce((prev: FileInfo, curr): FileInfo => {
     const prevSemver = getSemverFromText(prev.name)
     const currSemver = getSemverFromText(prev.name)
 
-    if(!prevSemver || !currSemver)
+    if (!prevSemver || !currSemver)
       return prev
 
     if (gt(prevSemver, currSemver))

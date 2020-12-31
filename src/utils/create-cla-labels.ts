@@ -1,19 +1,20 @@
-import { Context, Octokit } from 'probot'
+import { Context } from 'probot'
 
 import { CLA_MISSING_LABEL_TEXT, CLA_SIGNED_LABEL_TEXT } from './constants'
 import { getData } from './get-data'
+import { RepoCreateLabel, RepoLabels } from "../models";
 
 const repoCache = new Map<string, Date>()
 
 export const createClaLabel = async (
   context: Context,
-  labels: Octokit.IssuesListLabelsForRepoResponseItem[],
-  label: Octokit.IssuesCreateLabelParams): Promise<void> => {
+  labels: RepoLabels,
+  label: RepoCreateLabel): Promise<void> => {
 
   const hasLabel = labels.some(x => x.name === label.name)
 
   if (!hasLabel)
-    await context.github.issues.createLabel(context.repo(label))
+    await context.octokit.issues.createLabel(context.repo(label))
 
 }
 
@@ -26,7 +27,7 @@ export const createClaLabels = async (context: Context): Promise<void> => {
     return
 
   // TODO: Handle more then 100 label/repo
-  const labels = await context.github.issues.listLabelsForRepo(context.repo({ 'per_page': 100 }))
+  const labels = await context.octokit.issues.listLabelsForRepo(context.repo({ 'per_page': 100 }))
     .then(getData)
 
   await createClaLabel(

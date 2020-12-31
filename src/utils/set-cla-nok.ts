@@ -9,14 +9,14 @@ export const setClaNOk = async (context: Context, number: number, sha: string) =
   const repo = context.repo();
   const contributingMd = `https://github.com/${repo.owner}/${repo.repo}/blob/master/CONTRIBUTING.md`
 
-  await context.github.issues.createComment({
+  await context.octokit.issues.createComment({
     ...repo,
-    number,
+    issue_number: number,
     body: `Thank you for your contribution!
 Please [sign the CLA](${contributingMd}).`,
   })
 
-  await context.github.repos.createStatus(context.repo({
+  await context.octokit.repos.createCommitStatus(context.repo({
     sha,
     state: 'error',
     context: CLA_SIGN_STATUS_CONTEXT,

@@ -9,6 +9,6 @@ describe('getSemverFromText', () => {
   ${'cla-1.0.0'} | ${'1.0.0'}
   ${'cla-1.0.0.md'} | ${'1.0.0'}
 `('returns $expected when text is $text', ({ text, expected }) => {
-  expect(getSemverFromText(text)).toBe(expected)
-})
+    expect(getSemverFromText(text)).toBe(expected)
+  })
 })

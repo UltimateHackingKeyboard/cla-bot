@@ -4,11 +4,11 @@ import { FileInfo } from '../models/file-info'
 import { getData } from './get-data'
 import { findLatestClaFile } from './find-latest-cla-file'
 
-export async function getLatestClaFileInfo (context: Context): Promise<FileInfo> {
+export async function getLatestClaFileInfo(context: Context): Promise<FileInfo> {
   return context
-    .github
+    .octokit
     .repos
-    .getContents(context.repo({ path: 'cla' }))
+    .getContent(context.repo({ path: 'cla' }))
     .then(getData)
     .then(findLatestClaFile)
 }

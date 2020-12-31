@@ -36,7 +36,7 @@ describe.skip('pr-opened', (): void => {
 
     // Test that a comment is posted
     nock('https://api.github.com')
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .post('repos/ert78gb/cla-sign-bot-test/pulls/1', (body: any): boolean => {
         done(expect(body).toMatchObject(issueCreatedBody))
         return true
