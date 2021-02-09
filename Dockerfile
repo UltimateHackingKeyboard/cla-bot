@@ -1,4 +1,4 @@
-FROM node:15.5.0-alpine3.12 as builder
+FROM node:15.8.0-alpine3.12 as builder
 
 # Install build dependencies
 RUN apk add --update --no-cache python3 make g++
