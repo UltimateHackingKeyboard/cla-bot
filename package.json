@@ -34,7 +34,7 @@
     "@typescript-eslint/parser": "^4.15.0",
     "eslint": "^7.19.0",
     "jest": "^26.6.3",
-    "nock": "^13.0.5",
+    "nock": "^13.0.7",
     "semver": "^7.3.4",
     "smee-client": "^1.2.2",
     "source-map-support": "^0.5.19",
