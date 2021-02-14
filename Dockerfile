@@ -12,7 +12,7 @@ COPY ./app.yml .
 RUN npm install --only=production
 
 # ============ APP Stage ===============
-FROM node:15.5.0-alpine3.12 as app
+FROM node:15.8.0-alpine3.12 as app
 
 ARG NODE_ENV=production
 ENV NODE_ENV=$NODE_ENV
