@@ -1,4 +1,5 @@
 import { Context } from 'probot'
+import { EmitterWebhookEventName } from '@octokit/webhooks';
 
 import { Pr } from '../models'
 import { getData } from './get-data'
@@ -11,7 +12,7 @@ import { getFileContentBySha } from './get-file-content-by-sha'
 import { getSignersFromContent } from './get-signers-from-content'
 
 export async function handleAsClaPr(
-  context: Context,
+  context: Context<EmitterWebhookEventName>,
   pr: Pr,
 ): Promise<boolean> {
   const prFiles = await context

@@ -1,9 +1,8 @@
 import { Context } from 'probot'
-import { EventPayloads, WebhookEvent } from '@octokit/webhooks'
 
 import { setClaStatusesInRepo } from '../utils'
 
-export const push = async (context: WebhookEvent<EventPayloads.WebhookPayloadPush> & Omit<Context<EventPayloads.WebhookPayloadPush>, 'id' | 'name' | 'payload'>): Promise<void> => {
+export const push = async (context: Context<'push'>): Promise<void> => {
   try {
 
     context.log.debug('push', context.payload)
@@ -31,7 +30,7 @@ export const push = async (context: WebhookEvent<EventPayloads.WebhookPayloadPus
     }
 
     if (hasClaFileCommitted)
-      await setClaStatusesInRepo(context)
+      await setClaStatusesInRepo(context as any)
 
   } catch (err) {
     context.log.error(err)

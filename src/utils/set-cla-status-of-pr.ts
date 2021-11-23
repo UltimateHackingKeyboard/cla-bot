@@ -1,4 +1,5 @@
 import { Context } from 'probot'
+import { EmitterWebhookEventName } from '@octokit/webhooks';
 
 import { CLA_MISSING_LABEL_TEXT, CLA_SIGNED_LABEL_TEXT } from './constants'
 import { Pr } from '../models'
@@ -7,7 +8,7 @@ import { setClaOk } from './set-cla-ok'
 import { handleAsClaPr } from './handle-as-cla-pr'
 
 export async function setClaStatusOfPr(
-  context: Context,
+  context: Context<EmitterWebhookEventName>,
   signers: string[],
   pr: Pr,
 ): Promise<void> {

@@ -1,11 +1,11 @@
 import { Context } from 'probot'
-import { WebhookEvent } from "@octokit/webhooks";
+import { EmitterWebhookEventName } from '@octokit/webhooks';
 
 import { getData } from './get-data'
 import { setClaStatusOfPr } from './set-cla-status-of-pr'
 import { getClaSignersOfRepo } from './get-cla-signers-of-repo'
 
-export const setClaStatusesInRepo = async (context: WebhookEvent & Omit<Context, 'id' | 'name' | 'payload'>): Promise<void> => {
+export const setClaStatusesInRepo = async (context: Context<EmitterWebhookEventName>): Promise<void> => {
   const claSigners = await getClaSignersOfRepo(context)
 
   const openPrs = await context.octokit.pulls.list(context.repo({ state: 'open' }))

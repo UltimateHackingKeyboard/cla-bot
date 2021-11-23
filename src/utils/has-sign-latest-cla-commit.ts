@@ -1,11 +1,12 @@
 import { Context } from 'probot'
+import { EmitterWebhookEventName } from '@octokit/webhooks';
 
 import { Pr } from '../models'
 import { getData } from './get-data'
 import { COMMENT_PLS_SIGN_LATEST_CLA } from './constants';
 
 export async function hasSignLatestClaCommit(
-  context: Context,
+  context: Context<EmitterWebhookEventName>,
   pr: Pr,
 ): Promise<boolean> {
   return context.octokit.issues.listComments(context.repo({

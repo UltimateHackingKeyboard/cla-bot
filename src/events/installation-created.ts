@@ -1,13 +1,15 @@
 import { Context } from 'probot'
-import { EventPayloads, WebhookEvent } from '@octokit/webhooks'
 
 import {
   setClaStatusesInRepo,
 } from '../utils'
 
-export const installationCreated = async (context: WebhookEvent<EventPayloads.WebhookPayloadInstallation> & Omit<Context<EventPayloads.WebhookPayloadInstallation>, 'id' | 'name' | 'payload'>): Promise<void> => {
+export const installationCreated = async (context: Context<'installation.created'>): Promise<void> => {
   try {
     context.log.debug('installation.created', context.payload)
+
+    if(!context.payload.repositories)
+      return;
 
     for (const repo of context.payload.repositories) {
       context.repo = (params: any) => ({
@@ -16,7 +18,7 @@ export const installationCreated = async (context: WebhookEvent<EventPayloads.We
         ...params,
       })
 
-      await setClaStatusesInRepo(context)
+      await setClaStatusesInRepo(context as any)
     }
   } catch (error) {
     console.error(error)

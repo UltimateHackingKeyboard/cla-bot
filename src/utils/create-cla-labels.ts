@@ -1,4 +1,5 @@
 import { Context } from 'probot'
+import { EmitterWebhookEventName } from '@octokit/webhooks';
 
 import { CLA_MISSING_LABEL_TEXT, CLA_SIGNED_LABEL_TEXT } from './constants'
 import { getData } from './get-data'
@@ -7,7 +8,7 @@ import { RepoCreateLabel, RepoLabels } from "../models";
 const repoCache = new Map<string, Date>()
 
 export const createClaLabel = async (
-  context: Context,
+  context: Context<EmitterWebhookEventName>,
   labels: RepoLabels,
   label: RepoCreateLabel): Promise<void> => {
 
@@ -18,7 +19,7 @@ export const createClaLabel = async (
 
 }
 
-export const createClaLabels = async (context: Context): Promise<void> => {
+export const createClaLabels = async (context: Context<EmitterWebhookEventName>): Promise<void> => {
   const repo = `${context.repo().owner}/${context.repo().repo}`
 
   const date = repoCache.get(repo)

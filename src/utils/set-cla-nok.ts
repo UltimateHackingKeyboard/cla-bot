@@ -1,9 +1,10 @@
 import { Context } from 'probot'
+import { EmitterWebhookEventName } from '@octokit/webhooks';
 
 import { addClaMissingLabel } from './add-cla-missing-label'
 import { CLA_SIGN_STATUS_CONTEXT } from './constants'
 
-export const setClaNOk = async (context: Context, number: number, sha: string) => {
+export const setClaNOk = async (context: Context<EmitterWebhookEventName>, number: number, sha: string) => {
   await addClaMissingLabel(context, number)
 
   const repo = context.repo();
