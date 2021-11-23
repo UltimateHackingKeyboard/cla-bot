@@ -15,7 +15,7 @@ export async function prOpened(context: Context<'pull_request.opened' | 'pull_re
 
     const claSigners = await getClaSignersOfRepo(context as any)
     await setClaStatusOfPr(context as any, claSigners, context.payload.pull_request as any)
-  } catch (err) {
+  } catch (err: any) {
     context.log.error(err)
   }
 }

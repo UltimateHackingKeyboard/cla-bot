@@ -32,7 +32,7 @@ export const push = async (context: Context<'push'>): Promise<void> => {
     if (hasClaFileCommitted)
       await setClaStatusesInRepo(context as any)
 
-  } catch (err) {
+  } catch (err: any) {
     context.log.error(err)
   }
 
